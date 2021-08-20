@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+h1,h5, p, button {
+    color: #919191;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #3CB371;
+}
+
+.jumbotron{
+    margin-top: 2%;
+    background-color: #F5F5F5;
+}
+
+.topo h1{
+    margin-bottom: 3%;
+}
+
+.camera {
+    text-align: center;
+    margin-top: 3%;
+}
+
+.btn{
+    background:#3CB371;
+}
+
+.frente {
+    margin-bottom: 2%;
+}
+
+.tras {
+    margin-top: 2%;
+}
+.esquerda{
+    text-align: end;
+}
+
+.logs {
+    margin-top: 5%;
+}
+
+footer p{
+    margin-top: 5%;
+    text-align: center;
+    color: #E0FFFF;
+}

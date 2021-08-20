@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALE-ITV: Controle de robô via Joystick</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	 crossorigin="anonymous">
+	<script type="text/javascript" src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/vue">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/eventemitter2@5.0.1/lib/eventemitter2.min.js">
+    </script>
+    </script>
+    <script type="text/javascript" src="https://static.robotwebtools.org/mjpegcanvasjs/current/mjpegcanvas.min.js">
+    </script>
+
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>	
+</head>
+
+<body>
+	<div id="app" class="container">
+		<div class="jumbotron">
+            <div class="row topo">
+                <div class="col-md-4">
+                    <img src="./images/vale-itv.png" alt="Vale-ITV" class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <h1>WEB INTERFACE VALE-ITV!</h1>
+                    <div class="row conexao" style="max-height:200px;">
+                        <div class="col-md-12">
+                            <input type="text" v-model="ws_address" />
+                            <!--<button :disabled="loading" class="btn btn-danger" @click="disconnect" v-if="connected">Desconectar!</button>-->
+                            <button :disabled="loading" class="btn btn-success" @click="connect" v-if="!connected">Conectar!</button>
+                            <p class="text-danger" v-if="!connected">Desconectado!</p>
+                            <p class="text-success" v-if="connected">Conectado!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row camera">
+                <div class="col-md-12">
+                    <div id="mjpeg"></div>
+                </div>
+            </div>
+            <div class="row">   
+                <div class="col-md-12 text-center">
+                    <button @click="forward" :disabled="loading || !connected" class="btn">Frente</button>
+                    <br><br>
+                </div>
+    
+                
+                <div class="col-md-4 text-end esquerda">
+                    <button @click="turnLeft" :disabled="loading || !connected" class="btn">Esquerda</button>
+                </div>
+                <div class="col-md-4 text-center parar">
+                    <button @click="stop" :disabled="loading || !connected" class="btn btn-danger">Parar</button>
+                    <br><br>
+                </div>
+                <div class="col-md-4 text-start direita">
+                    <button @click="turnRight" :disabled="loading || !connected" class="btn">Direita</button>
+                </div>
+    
+    
+                <div class="col-md-12 text-center">
+                    <button @click="backward" :disabled="loading || !connected" class="btn">Trás</button>
+                </div>
+
+                <div class="col-md-12 logs" style="max-height:200px; overflow:auto;">
+                    <h5>Logs</h5>
+                    <div>
+                        <p v-for="log of logs">{{ log }}</p>
+                    </div>
+                </div>
+		</div>
+
+	</div>
+
+    <div class="container">
+        <footer>
+            <p><b>Desenvolvido por Lucas Barbosa © 2021</b></p>
+        </footer>
+
+    </div>
+
+	<script type="text/javascript" src="main.js">
+
+	</script>
+</body>
+
+</html>
