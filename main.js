@@ -1,6 +1,5 @@
 var app = new Vue({
     el: '#app',
-    // storing the state of the page
     data: {
         connected: false,
         ros: null,
@@ -10,7 +9,6 @@ var app = new Vue({
         topic: null,
         message: null,
     },
-    // helper methods to connect to ROS
     methods: {
         connect: function() {
             this.loading = true
